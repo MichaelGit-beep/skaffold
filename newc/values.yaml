@@ -1,0 +1,3 @@
+image: nginx
+var1: prod1
+var2: prod2

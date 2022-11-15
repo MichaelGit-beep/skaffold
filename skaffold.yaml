@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: custom-classifier
+build:
+  artifacts:
+  - image: registry.hub.docker.com/akicontport/myhttpd # 
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+    - name: newc
+      chartPath: ./newc
+      setValues: 
+        var1: oooover #1
+      valuesFiles: 
+      - ./dev.yaml #2 - and after will be applied chart values file
+      artifactOverrides:
+        image: registry.hub.docker.com/akicontport/myhttpd
